@@ -1,30 +1,33 @@
-// Load a page dynamically and update URL
-function loadPage(page, addToHistory = true) {
+// Load partials from same folder
+function loadPartial(id, file){
+  fetch(file)
+    .then(res => res.text())
+    .then(html => document.getElementById(id).innerHTML = html);
+}
+
+// Load main content
+function loadPage(page){
   fetch(page)
     .then(res => res.text())
-    .then(data => {
-      document.getElementById('app').innerHTML = data;
-
-      if(addToHistory) {
-        history.pushState({page: page}, '', page);
-      }
-    });
+    .then(html => document.getElementById('app').innerHTML = html);
 }
 
-// Event listeners for navbar buttons
-document.getElementById('nav-home').onclick = () => loadPage('/home.html');
-document.getElementById('nav-about').onclick = () => loadPage('/about.html');
-document.getElementById('nav-contact').onclick = () => loadPage('/contact.html');
-
-// Handle browser back/forward buttons
-window.onpopstate = (event) => {
-  if(event.state && event.state.page) {
-    loadPage(event.state.page, false); // false: don't pushState again
-  } else {
-    loadPage('/home.html', false); // fallback
-  }
+// Setup navbar buttons
+function initNav() {
+  document.getElementById('nav-home').onclick = () => loadPage('home.html');
+  document.getElementById('nav-about').onclick = () => loadPage('about.html');
+  document.getElementById('nav-contact').onclick = () => loadPage('contact.html');
 }
 
-// Load initial page based on URL
-const initialPage = location.pathname.replace('/', '') || 'home.html';
-loadPage(initialPage, false);
+// Load everything on window load
+window.onload = () => {
+  loadPartial('navbar', 'navbar.html');
+  loadPartial('left-sidebar', 'left.html');
+  loadPartial('right-sidebar', 'right.html');
+  loadPartial('footer', 'footer.html');
+
+  loadPage('home.html');
+
+  // small timeout to ensure navbar loaded
+  setTimeout(initNav, 50);
+};
