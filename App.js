@@ -7,4 +7,4 @@ function loadPage(page){
 }
 
 
-loadPage('pages/home.html');
+loadPage('home.html');
