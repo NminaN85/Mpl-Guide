@@ -2,21 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>My Site</title>
+  <title>SPA Example</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <nav>
-    <button onclick="loadPage('/home.html')">Home</button>
-    <button onclick="loadPage('/about.html')">About</button>
-    <button onclick="loadPage('/contact.html')">Contact</button>
+    <button id="nav-home">Home</button>
+    <button id="nav-about">About</button>
+    <button id="nav-contact">Contact</button>
   </nav>
 
   <div class="layout">
     <aside class="left">Left Sidebar</aside>
 
     <main id="app">
+
 
     </main>
 
@@ -25,6 +26,6 @@
 
   <footer>Footer</footer>
 
-<script src="app.js"></script>
+<script src="app.js" defer></script>
 </body>
 </html>
