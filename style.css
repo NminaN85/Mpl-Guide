@@ -14,6 +14,10 @@ nav button{
   cursor:pointer;
 }
 
+nav button:hover { 
+  background:#666; 
+}
+
 .layout{
   display:grid;
   grid-template-columns: 200px 1fr 200px;
