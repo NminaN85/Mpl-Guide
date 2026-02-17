@@ -1,12 +1,13 @@
 {
-  "name": "astro-single-folder",
+  "name": "mpl-guide",
+  "type": "module",
   "version": "1.0.0",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview"
   },
-"devDependencies": {
-  "astro": "^3.6.5"
-}
+  "dependencies": {
+    "astro": "^4.5.0"
+  }
 }
